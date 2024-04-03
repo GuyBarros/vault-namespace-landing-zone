@@ -1,7 +1,10 @@
-# terraform-vault-namespace-langding zome
-a quick TF code to showcase creating child admin groups that adds a parent group to its members of tenant specific policies
+# HashiCorp Vault Namespace Landing Zone
 
-this terraform code creates namespace `landing zone` with default policies, secret engines and Auth methods
+## DISCLAIMER: not for production use, showcase code only
+
+This terraform code creates namespace `landing zone`s with default policies, secret engines and Auth methods
+
+Please reffer to official [Namespaces documentation](https://developer.hashicorp.com/vault/docs/enterprise/namespaces)
 
 to run this TF code all that is needed is your Vault specific enviroment variables:
 
