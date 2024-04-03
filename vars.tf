@@ -1,3 +1,7 @@
+#--------------------------------
+# This variable is a map of
+# child - parent namespaces
+#--------------------------------
 
 variable "namespaces" {
   type = map(string)
