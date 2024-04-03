@@ -1,0 +1,1 @@
+# vault-namespace-landing-zone
