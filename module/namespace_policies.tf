@@ -11,11 +11,11 @@ resource "vault_policy" "vault-namespace-independent" {
   name       = "${length(var.parent_namespace) > 0 ? join("/", [var.parent_namespace, var.child_namespace]) : var.child_namespace}-admin"
   namespace  = length(var.parent_namespace) > 0 ? join("/", [var.parent_namespace, var.child_namespace]) : var.child_namespace
 policy     = <<EOF
-path "${length(var.parent_namespace) > 0 ? join("/", [var.parent_namespace, var.child_namespace]) : var.child_namespace}/${vault_mount.kvv2.path}/*" {
+path "${vault_mount.kvv2.path}/*" {
   capabilities = ["create", "read", "update", "delete", "list"]
 }
 
-path "${length(var.parent_namespace) > 0 ? join("/", [var.parent_namespace, var.child_namespace]) : var.child_namespace}/${vault_mount.transit.path}/*" {
+path "${vault_mount.transit.path}/*" {
   capabilities = ["create", "read", "update", "delete", "list"]
 }
 
@@ -30,9 +30,15 @@ path "sys/policies/acl" {
 }
 
 # List available secrets engines
-path "sys/mounts/${length(var.parent_namespace) > 0 ? join("/", [var.parent_namespace, var.child_namespace]) : var.child_namespace}/${vault_mount.transit.path}" {
+path "sys/mounts/${vault_mount.transit.path}" {
   capabilities = [ "read" ]
 }
+
+# List available secrets engines
+path "sys/mounts/${vault_mount.kvv2.path}" {
+  capabilities = [ "read" ]
+}
+
 
 
 
@@ -94,6 +100,6 @@ resource "vault_identity_group" "child_admin_group" {
     version = "2"
   }
 
-  member_group_ids = [var.admin_group_id]
+   member_group_ids = [var.admin_group_id]
 
 }

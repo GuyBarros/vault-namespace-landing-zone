@@ -13,16 +13,10 @@ resource "vault_identity_group" "namespaces_admin" {
   name     = "namespaces_admin"
   type     = "internal"
   # policies = ["default"]
-member_entity_ids = [vault_identity_entity.tf_user.id]
+
   metadata = {
     version = "2"
   }
 
 }
 
-#--------------------------------
-# Enable userpass auth method
-#--------------------------------
-resource "vault_auth_backend" "userpass" {
-  type      = "userpass"
-}
