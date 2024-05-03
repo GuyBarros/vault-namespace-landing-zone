@@ -18,6 +18,8 @@ variable "namespaces" {
     "TeamH" = "OrgB" # child namespace of OrgB
     "TeamI" = "OrgB" # child namespace of OrgB
     "TeamJ" = "OrgB" # child namespace of OrgB
+    "OrgC"  = ""     # example namespace without parent
+    "TeamK" = "OrgC" # child namespace of OrgB
   }
 
 }

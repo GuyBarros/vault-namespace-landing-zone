@@ -18,5 +18,7 @@ resource "vault_identity_group" "namespaces_admin" {
     version = "2"
   }
 
+  member_entity_ids = ["a935362c-bdfe-ccf6-62c9-896a0a8ad551"]
+
 }
 
