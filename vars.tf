@@ -22,3 +22,8 @@ variable "namespaces" {
 
 }
 
+variable "default_namespace" {
+  type = string
+  default = "admin"
+}
+

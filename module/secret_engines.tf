@@ -6,7 +6,7 @@ resource "vault_mount" "kvv2" {
   options = {
     version = "2"
   }
-  depends_on = [vault_namespace.child]
+  depends_on = [vault_namespace.child,time_sleep.wait_3_seconds]
 }
 
 
@@ -15,5 +15,5 @@ resource "vault_mount" "transit" {
   path        = join("_", [var.child_namespace, "transit"])
   type        = "transit"
   description = "This is an example transit secret engine mount"
-  depends_on  = [vault_namespace.child]
+  depends_on  = [vault_namespace.child,time_sleep.wait_3_seconds]
 }

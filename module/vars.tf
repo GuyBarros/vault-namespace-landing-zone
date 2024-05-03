@@ -5,3 +5,7 @@ variable "child_namespace" {
 variable "parent_namespace" {
   type = string
 }
+
+variable "admin_group_id" {
+  type = string
+}
