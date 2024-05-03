@@ -2,7 +2,7 @@ vault token create -display-name=namespaces_admin -entity-alias=tf_alias -role=t
 
 
 
-vault write sys/capabilities token=hvs.CAESIL57LGgLlwQ6MVw5bDDhCTUO6CTYjDfBtStKpHu9XaO7GikKImh2cy5nMjViSHduQ0ZubE1zUDc3bXBibmxUenAuOEJ5SnAQnLv8Ag paths="sys/namespaces/OrgA"
+vault write sys/capabilities token=$(echo $VAULT_TOKEN) paths="sys/namespaces/OrgA"
 
 
 curl 'https://do-not-delete-ever-v2-public-vault-cf6a1d76.5773df81.z1.hashicorp.cloud:8200/v1/sys/internal/ui/namespaces' \
@@ -19,12 +19,12 @@ curl 'https://do-not-delete-ever-v2-public-vault-cf6a1d76.5773df81.z1.hashicorp.
   -H 'sec-fetch-site: same-origin' \
   -H 'user-agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36' \
   -H 'x-vault-namespace: admin' \
-  -H 'x-vault-token: hvs.CAESIL57LGgLlwQ6MVw5bDDhCTUO6CTYjDfBtStKpHu9XaO7GikKImh2cy5nMjViSHduQ0ZubE1zUDc3bXBibmxUenAuOEJ5SnAQnLv8Ag'
+  -H 'x-vault-token: $(echo $VAULT_TOKEN)
 
 
 curl \
       -H 'x-vault-namespace: admin' \
-      -H 'x-vault-token: hvs.CAESIL57LGgLlwQ6MVw5bDDhCTUO6CTYjDfBtStKpHu9XaO7GikKImh2cy5nMjViSHduQ0ZubE1zUDc3bXBibmxUenAuOEJ5SnAQnLv8Ag' \
+      -H 'x-vault-token: $(echo $VAULT_TOKEN)' \
      -X LIST \
     https://do-not-delete-ever-v2-public-vault-cf6a1d76.5773df81.z1.hashicorp.cloud:8200/v1/sys/namespaces/
 
