@@ -13,6 +13,7 @@ resource "vault_identity_group" "namespaces_admin" {
   name     = "namespaces_admin"
   type     = "internal"
   # policies = ["default"]
+  external_member_entity_ids = true
 
   metadata = {
     version = "2"
